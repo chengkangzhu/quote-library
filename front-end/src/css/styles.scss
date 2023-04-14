@@ -1,0 +1,253 @@
+@import "global";
+
+$black: #555555;
+$background-color: white;
+$border-radius: 6px;
+$quote-font-size: 28px;
+$quote-font-weight: 500;
+$quoter-font-size: 16px;
+$quoter-font-weight: 400;
+$button-background-color: $black;
+$button-font-size: 16px;
+$button-font-weight: 400;
+$button-color: white;
+$icon-button-font-size: 18px;
+
+.navbar {
+	box-shadow: 0px 1px 11px 5px rgba(56, 56, 56, 0.75);
+	z-index: 100;
+}
+
+#home {
+	height: calc(100vh - 56px);
+	font-family: "Raleway", sans-serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	transition: all 2s;
+
+	.home-container {
+		box-shadow: 0px 29px 0px 15px rgba(94, 86, 86, 0.75);
+		padding: 40px 50px;
+		max-width: 550px;
+		background-color: $background-color;
+		border-radius: $border-radius;
+
+		.quote {
+			font-size: $quote-font-size;
+			font-weight: $quote-font-weight;
+			text-align: center;
+			line-height: normal;
+			letter-spacing: normal;
+			transition: 1s;
+
+			.quote-left-icon {
+				color: $black;
+				font-size: $quote-font-size;
+				margin-right: 15px;
+				transition: 1s;
+			}
+		}
+
+		.quoter {
+			text-align: right;
+			padding-top: 20px;
+			font-size: $quoter-font-size;
+			font-weight: $quoter-font-weight;
+			transition: 1s;
+		}
+
+		.text-buttons {
+			background-color: $button-background-color;
+			padding: 12px 20px;
+			border: 0;
+			border-radius: 3px;
+			font-size: $button-font-size;
+			font-weight: $button-font-weight;
+			color: $button-color;
+			margin-top: 30px;
+			margin-left: auto;
+			position: relative;
+			float: right;
+			transition: 1s;
+		}
+
+		.icon-buttons {
+			background-color: $button-background-color;
+			display: inline-block;
+			padding: 10px 14px 10px 14px;
+			text-align: center;
+			border: 0;
+			border-radius: 3px;
+			font-size: $quoter-font-size;
+			font-weight: $quoter-font-weight;
+			color: $button-color;
+			margin-top: 30px;
+			margin-right: 4px;
+			font-size: $icon-button-font-size;
+			transition: 1s !important;
+		}
+
+		a,
+		button {
+			cursor: pointer;
+		}
+	}
+
+	.creator {
+		font-size: 12px;
+		font-weight: 400;
+		color: white;
+		text-align: center;
+		margin-top: 20px;
+	}
+}
+
+//quote shelf
+#quoteList {
+	background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v960-ning-30.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=63dd5f402645ef52fb7dfb592aec765a");
+	background-repeat: no-repeat;
+	background-size: cover;
+	overflow-y: scroll;
+	height: calc(100vh - 56px);
+	font-family: "Raleway", sans-serif;
+
+	.card {
+		background-color: transparent;
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+
+		.card-body {
+			padding: 25px;
+			width: 100%;
+		}
+
+		.actionButton {
+			display: flex;
+			justify-content: space-between;
+			width: 140px;
+			padding: 25px;
+
+			.deleteIcon,
+			.editIcon {
+				color: rgb(10, 10, 10);
+				font-size: 30px;
+				width: 30px;
+				cursor: pointer;
+			}
+		}
+	}
+}
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(80, 80, 80, 0.452);
+}
+
+.popup {
+	background-color: #d6d6d6;
+	border-radius: 15px;
+	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.268);
+	width: 450px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 30px 40px;
+	z-index: 2;
+
+	h2 {
+		font-size: 22px;
+		font-weight: 500;
+	}
+
+	label {
+		display: block;
+		margin-top: 12px;
+		margin-bottom: 6px;
+		font-weight: 500;
+	}
+
+	input,
+	textarea {
+		border: 0;
+		resize: none;
+		background-color: white;
+		width: 100%;
+		padding: 4px 8px;
+		height: auto;
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	.buttons {
+		float: right;
+
+		button {
+			padding: 4px 0;
+			width: 80px;
+			border-radius: 5px;
+
+			&:nth-child(1) {
+				border: 1px solid black;
+				background-color: #c9c9c9;
+			}
+
+			&:nth-child(2) {
+				border: 1px solid #00d1ff;
+				background-color: #00d1ff;
+				margin: 20px 20px 0;
+				color: white;
+			}
+		}
+	}
+}
+.popup-notif {
+	background-color: rgb(109, 109, 109);
+	color: white;
+	z-index: 2;
+	position: fixed;
+	bottom: 15px;
+	left: 50%;
+	padding: 10px 30px;
+	border-radius: 4px;
+	transform: translate(-50%, 0);
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.267);
+	animation: slide-up 0.5s ease forwards;
+
+	@keyframes slide-up {
+		from {
+			transform: translate(-50%, 120%);
+		}
+		to {
+			transform: translate(-50%, 0%);
+		}
+	}
+}
+
+.addQuoteBtn {
+	background-color: #666666;
+	z-index: 10;
+	font-size: 70px;
+	font-weight: 300;
+	color: white;
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	border: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	bottom: 8vh;
+	right: 6vw;
+}
