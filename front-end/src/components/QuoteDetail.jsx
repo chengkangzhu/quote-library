@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 
 //icon
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -6,17 +6,22 @@ import { AiFillEdit } from "react-icons/ai";
 import axios from "axios";
 
 //context
-import { QuoteContext } from "../contexts/QuoteContext";
+import useQuoteContext from "../hooks/useQuoteContext";
+import useAuthContext from "../hooks/useAuthContext";
 
-const QuoteDetail = ({ quote, quoter, _id ,handleEdit}) => {
-	const {  dispatch } = useContext(QuoteContext);
-	
+const QuoteDetail = ({ quote, quoter, _id, handleEdit }) => {
+	const { dispatch } = useQuoteContext();
+	const {user} = useAuthContext()
 
 	const handleDelete = (id) => {
-		axios.delete("http://localhost:5000/api/quote/delete/" + id);
-		dispatch({ type: "DELETE_QUOTE", payload: {  id } });
+		if(!user)return 
+		axios.delete("http://localhost:5000/api/quote/delete/" + id, {
+			headers: {
+				Authorization: `bearer ${user.token}`,
+			},
+		});
+		dispatch({ type: "DELETE_QUOTE", payload: { id } });
 	};
-
 
 	return (
 		<div className="card">
@@ -31,7 +36,7 @@ const QuoteDetail = ({ quote, quoter, _id ,handleEdit}) => {
 			<div className="actionButton">
 				<AiFillEdit
 					className="editIcon"
-					onClick={()=>handleEdit(_id)}
+					onClick={() => handleEdit(_id)}
 				/>
 				<RiDeleteBin6Line
 					className="deleteIcon"

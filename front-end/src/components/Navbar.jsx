@@ -1,11 +1,16 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link,useLocation } from "react-router-dom";
+
+//hooks
+import useLogout from "../hooks/useLogout";
+import useAuthContext from "../hooks/useAuthContext";
 
 export default function Navbar(props) {
-	const [ActiveLink, setActiveLink] = useState("generator");
-	function handleNavChange(link) {
-		setActiveLink(link);
-	}
+	const { logout } = useLogout();
+	const { user } = useAuthContext();
+	const location = useLocation();
+
+
 
 	return (
 		<nav
@@ -39,13 +44,7 @@ export default function Navbar(props) {
 						<li className="nav-item">
 							<Link
 								to="/"
-								key={ActiveLink}
-								className={`nav-link ${
-									ActiveLink === "generator" && "active"
-								}`}
-								aria-current="page"
-								href="#"
-								onClick={() => handleNavChange("generator")}
+								className={`nav-link ${location.pathname === "/" && "active"}`}
 							>
 								Generator
 							</Link>
@@ -53,31 +52,40 @@ export default function Navbar(props) {
 						<li className="nav-item">
 							<Link
 								to="/quoteshelf"
-								className={`nav-link ${
-									ActiveLink === "quoteshelf" && "active"
-								}`}
-								href="#"
-								onClick={() => handleNavChange("quoteshelf")}
+								className={`nav-link ${location.pathname === "/quoteshelf" && "active"}`}
 							>
 								QuoteShelf
 							</Link>
 						</li>
 					</ul>
 					<form className="d-flex">
-						<button
-							className="btn btn-success me-2"
-							type="button"
-							// onClick={() => handleNavChange("login")}
-						>
-							Log In
-						</button>
-						<button
-							class="btn btn-sm btn-outline-light"
-							type="button"
-							// onClick={() => handleNavChange("signup")}
-						>
-							Sign Up
-						</button>
+						{user ? (
+							<div>
+							{user.email && <span className=" me-2 text-success">{user.email}</span>}
+								<button
+									className="btn btn-outline-light me-2"
+									onClick={() => logout()}
+								>
+									Logout
+								</button>
+							</div>
+						) : (
+							<div>
+								<Link
+									to="/login"
+									className="btn btn-success me-2"
+								>
+									Log In
+								</Link>
+
+								<Link
+									to="/signup"
+									className="btn  btn-outline-light "
+								>
+									Sign Up
+								</Link>
+							</div>
+						)}
 					</form>
 				</div>
 			</div>

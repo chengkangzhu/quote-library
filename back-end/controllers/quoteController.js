@@ -3,7 +3,8 @@ const Quote = require("../models/quote.model");
 //get all quotes
 const getQuotes = async (req, res) => {
 	try {
-		const quotes = await Quote.find();
+		const user_id = req.user._id;
+		const quotes = await Quote.find({ user_id });
 		res.json(quotes);
 	} catch (err) {
 		console.error(err);
@@ -32,7 +33,8 @@ const getQuote = async (req, res) => {
 const addQuote = async (req, res) => {
 	try {
 		const { quote, quoter } = req.body;
-		const newQuote = await Quote.create({ quote, quoter });
+		const user_id = req.user._id;
+		const newQuote = await Quote.create({ quote, quoter, user_id });
 		res.json(newQuote);
 	} catch (err) {
 		console.error(err);

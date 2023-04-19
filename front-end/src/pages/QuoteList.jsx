@@ -1,27 +1,35 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 //component
 import QuoteDetail from "../components/QuoteDetail";
 import QuoteForm from "../components/QuoteForm";
 
-//context
-import { QuoteContext } from "../contexts/QuoteContext";
+//context hooks
+import useQuoteContext from "../hooks/useQuoteContext";
+import useAuthContext from "../hooks/useAuthContext";
 
 const QuoteList = () => {
-	const { Quotes, dispatch } = useContext(QuoteContext);
+	const { Quotes, dispatch } = useQuoteContext();
 	const [showForm, setShowForm] = useState(false);
 	const [formId, setFormId] = useState("");
+	const [formHeading, setFormHeading] = useState("");
 	const [showNotification, setShowNotification] = useState(false);
+	const { user } = useAuthContext();
 
 	useEffect(() => {
+		if (!user) return;
 		axios
-			.get("http://localhost:5000/api/quote")
+			.get("http://localhost:5000/api/quote", {
+				headers: {
+					authorization: `bearer ${user.token}`,
+				},
+			})
 			.then((response) =>
 				dispatch({ type: "SET_QUOTES", payload: response.data })
 			)
 			.catch((error) => console.error(error));
-	}, [dispatch]);
+	}, [dispatch, user]);
 
 	const closeForm = () => {
 		setFormId("");
@@ -35,6 +43,7 @@ const QuoteList = () => {
 	async function handleEdit(id) {
 		await setFormId(id);
 		setShowForm(true);
+		setFormHeading("Edit Quote");
 	}
 
 	return (
@@ -51,6 +60,7 @@ const QuoteList = () => {
 				<QuoteForm
 					closeForm={() => closeForm()}
 					showNotif={() => showNotif()}
+					heading={formHeading}
 					id={formId}
 				/>
 			)}
@@ -60,7 +70,13 @@ const QuoteList = () => {
 					Quote successfully edited
 				</span>
 			)}
-			<button className="addQuoteBtn" onClick={() => setShowForm(true)}>
+			<button
+				className="addQuoteBtn"
+				onClick={() => {
+					setShowForm(true);
+					setFormHeading("Add Quote");
+				}}
+			>
 				+
 			</button>
 		</div>

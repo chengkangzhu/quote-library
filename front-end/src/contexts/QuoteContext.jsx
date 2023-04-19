@@ -30,6 +30,8 @@ const QuoteContextReducer = (state, action) => {
 			return {
 				Quotes: state.Quotes.filter((q) => q._id !== action.payload.id),
 			};
+		default:
+			return state
 	}
 };
 

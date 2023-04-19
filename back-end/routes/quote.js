@@ -1,12 +1,15 @@
 const router = require("express").Router();
-const {
-    getQuotes,
-    getQuote,
-    addQuote,
-    editQuote,
-    deleteQuote
-} = require("../controllers/quoteController")
+const requireAuth = require("../middlewares/requireAuth");
 
+const {
+	getQuotes,
+	getQuote,
+	addQuote,
+	editQuote,
+	deleteQuote,
+} = require("../controllers/quoteController");
+
+router.use(requireAuth);
 router.get("/", getQuotes);
 
 router.get("/:id", getQuote);

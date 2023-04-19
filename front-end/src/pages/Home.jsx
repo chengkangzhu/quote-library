@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 
 // icons
 import { FaTwitter } from "react-icons/fa";
@@ -12,11 +12,9 @@ import randomQuote from "quote-library";
 import axios from "axios";
 
 //context
-import { QuoteContext } from "../contexts/QuoteContext";
+import useAuthContext from "../hooks/useAuthContext";
 
 export default function Home(props) {
-	const { Quotes, dispatch } = useContext(QuoteContext);
-
 	//setting random color
 	const randomColor = () =>
 		`hsl(${Math.floor(Math.random() * 360)}, 50%, 60%)`;
@@ -27,6 +25,7 @@ export default function Home(props) {
 	const [{ quoteText, quoteAuthor }, setQuote] = useState(
 		randomQuote.randomQuote()
 	);
+	const { user } = useAuthContext();
 
 	//handle changes function
 	function handleClick() {
@@ -36,12 +35,21 @@ export default function Home(props) {
 	}
 
 	async function handleBookmark() {
+		if (!user) return alert("you need be logged in to save quotes");
 		try {
-			setBookmark((prev) => !prev);
-			const newQuote = { quote: quoteText, quoter: quoteAuthor };
-			const response = await axios.post("http://localhost:5000/api/quote/add",newQuote);
-
-			//use dispatch to add quote to the quoteList context
+			if (!bookmarked) {
+				setBookmark(true);
+				const newQuote = { quote: quoteText, quoter: quoteAuthor };
+				await axios.post(
+					"http://localhost:5000/api/quote/add",
+					newQuote,
+					{
+						headers: {
+							Authorization: `bearer ${user.token}`,
+						},
+					}
+				);
+			}
 		} catch (err) {
 			console.error(err);
 		}

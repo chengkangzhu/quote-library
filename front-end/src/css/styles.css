@@ -18,6 +18,13 @@ body, body * {
   z-index: 100;
 }
 
+body {
+  background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v960-ning-30.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=63dd5f402645ef52fb7dfb592aec765a");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+}
+
 #home {
   height: calc(100vh - 56px);
   font-family: "Raleway", sans-serif;
@@ -231,4 +238,58 @@ body, body * {
   position: fixed;
   bottom: 8vh;
   right: 6vw;
+}
+
+.signup,
+.login {
+  max-width: 400px;
+  margin: 100px auto;
+  background-color: rgb(255, 255, 255);
+  padding: 25px;
+  border-radius: 10px;
+}
+.signup h3,
+.login h3 {
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.signup input,
+.login input {
+  margin-bottom: 20px;
+}
+.signup label,
+.login label {
+  margin-bottom: 10px;
+}
+.signup button,
+.login button {
+  display: block;
+  width: 100%;
+  margin-top: 40px;
+}
+.signup span,
+.login span {
+  font-size: 16px;
+  margin-top: 20px;
+  display: block;
+  text-align: center;
+  color: rgb(65, 65, 65);
+}
+.signup span a,
+.login span a {
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+.error {
+  padding: 10px;
+  background: #ffcccc;
+  border: 1px solid #ff4d4d;
+  color: #ff4d4d;
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+input.error {
+  border: 1px solid #ff4d4d;
 }/*# sourceMappingURL=styles.css.map */
