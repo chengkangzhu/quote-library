@@ -20,7 +20,7 @@ const QuoteList = () => {
 	useEffect(() => {
 		if (!user) return;
 		axios
-			.get("http://localhost:5000/api/quote", {
+			.get("https://quote-library-api.onrender.com/api/quote", {
 				headers: {
 					authorization: `bearer ${user.token}`,
 				},

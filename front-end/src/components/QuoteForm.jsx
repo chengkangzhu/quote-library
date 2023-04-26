@@ -28,8 +28,8 @@ const QuoteForm = ({ closeForm, heading, id, showNotif }) => {
 		};
 
 		const url = id
-			? `http://localhost:5000/api/quote/edit/${id}`
-			: "http://localhost:5000/api/quote/add";
+			? `https://quote-library-api.onrender.com/api/quote/edit/${id}`
+			: "https://quote-library-api.onrender.com/api/quote/add";
 		const requestType = id ? "put" : "post";
 		const actionType = id ? "EDIT_QUOTE" : "ADD_QUOTE";
 

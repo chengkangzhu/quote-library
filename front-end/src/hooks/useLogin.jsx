@@ -12,7 +12,7 @@ const useLogin = () => {
 		setError(null);
 
 		try {
-			const response = await axios.post("http://localhost:5000/api/user/login",{ email, password });
+			const response = await axios.post("https://quote-library-api.onrender.com/api/user/login",{ email, password });
 			localStorage.setItem("user", JSON.stringify(response.data));    
 			dispatch({ type: "LOGIN", payload: response.data });
 			SetIsLoading(false);

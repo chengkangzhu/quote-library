@@ -41,7 +41,7 @@ export default function Home(props) {
 				setBookmark(true);
 				const newQuote = { quote: quoteText, quoter: quoteAuthor };
 				await axios.post(
-					"http://localhost:5000/api/quote/add",
+					"https://quote-library-api.onrender.com/api/quote/add",
 					newQuote,
 					{
 						headers: {
