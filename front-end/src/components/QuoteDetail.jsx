@@ -15,7 +15,7 @@ const QuoteDetail = ({ quote, quoter, _id, handleEdit }) => {
 
 	const handleDelete = (id) => {
 		if(!user)return 
-		axios.delete("https://quote-library-api.onrender.com/api/quote/delete/" + id, {
+		axios.delete("quote-library-2-production.up.railway.app/api/quote/delete/" + id, {
 			headers: {
 				Authorization: `bearer ${user.token}`,
 			},
