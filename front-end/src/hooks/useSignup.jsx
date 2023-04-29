@@ -12,7 +12,7 @@ const useSignup = () => {
 		setError(null);
 
 		try {
-			const response = await axios.post("quote-library-2-production.up.railway.app/api/user/signup",{ email, password });
+			const response = await axios.post("https://quote-library-2-production.up.railway.app/api/user/signup",{ email, password });
 			localStorage.setItem("user", JSON.stringify(response.data));
 			dispatch({ type: "LOGIN", payload: response.data });
 			SetIsLoading(false);

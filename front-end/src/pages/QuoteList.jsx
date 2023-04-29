@@ -20,7 +20,7 @@ const QuoteList = () => {
 	useEffect(() => {
 		if (!user) return;
 		axios
-			.get("quote-library-2-production.up.railway.app/api/quote", {
+			.get("https://quote-library-2-production.up.railway.app/api/quote", {
 				headers: {
 					authorization: `bearer ${user.token}`,
 				},
