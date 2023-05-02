@@ -14,7 +14,7 @@ $button-color: white;
 $icon-button-font-size: 18px;
 
 .navbar {
-	box-shadow: 0px 1px 11px 5px rgba(56, 56, 56, 0.75);
+	box-shadow: 0px 1px 10px 5px rgba(56, 56, 56, 0.63);
 	z-index: 100;
 }
 body {
@@ -98,6 +98,8 @@ body {
 		button {
 			cursor: pointer;
 		}
+
+
 	}
 
 	.creator {

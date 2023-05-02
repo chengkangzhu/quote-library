@@ -1,16 +1,21 @@
 html {
-    font-size:100%;
-    box-sizing: border-box;
+	font-size: 100%;
+	box-sizing: border-box;
 }
 
-*, *::after ,*::before{
-    box-sizing: inherit;
+*,
+*::after,
+*::before {
+	box-sizing: inherit;
 }
 
-body, body * {
-    margin:0;
-    padding:0;
-    list-style-type:none;
+body,
+body * {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
 }
 
-
+.tooltip{
+    z-index: 9999;
+}

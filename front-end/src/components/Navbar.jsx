@@ -14,7 +14,7 @@ export default function Navbar(props) {
 
 	return (
 		<nav
-			className="navbar navbar-expand-lg bg-body-tertiary navbar-dark"
+			className="navbar navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark"
 			style={{ background: "#555" }}
 		>
 			<div className="container">

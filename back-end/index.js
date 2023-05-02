@@ -20,14 +20,15 @@ db.once("open", function () {
 });
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
-
-
 const quoteRouter = require("./routes/quote");
-const userouter = require("./routes/user");
+const useRouter = require("./routes/user");
 app.use("/api/quote", quoteRouter);
-app.use("/api/user", userouter);
+app.use("/api/user", useRouter);
+
+
+
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
 	console.log(`server running on port ${port}`);
-}); 
+});

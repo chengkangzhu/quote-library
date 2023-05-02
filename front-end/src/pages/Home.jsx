@@ -6,6 +6,7 @@ import { FaTumblr } from "react-icons/fa";
 import { AiFillStar } from "react-icons/ai";
 import { AiOutlineStar } from "react-icons/ai";
 import { FaQuoteLeft } from "react-icons/fa";
+import { AiFillRobot } from "react-icons/ai";
 
 //packages
 import randomQuote from "quote-library";
@@ -65,17 +66,16 @@ export default function Home(props) {
 					/>
 					{quoteText}
 				</p>
-
 				<p className="quoter" style={{ color: color }}>
 					- {quoteAuthor}
 				</p>
+
 				<a
 					style={{ backgroundColor: color }}
 					href={`https://twitter.com/intent/tweet?hashtags=quotes&text="${quoteText}" ${quoteAuthor}`}
 					className="icon-buttons"
 					target="_blank"
 					rel="noopener noreferrer"
-					onClick={props.onclick}
 				>
 					<FaTwitter />
 				</a>
@@ -85,7 +85,6 @@ export default function Home(props) {
 					className="icon-buttons"
 					target="_blank"
 					rel="noopener noreferrer"
-					onClick={props.onclick}
 				>
 					<FaTumblr />
 				</a>
@@ -98,6 +97,13 @@ export default function Home(props) {
 				>
 					{bookmarked ? <AiFillStar /> : <AiOutlineStar />}
 				</button>
+				<a
+					style={{ backgroundColor: color }}
+					className="icon-buttons"
+					target="_blank"
+				>
+					<AiFillRobot />
+				</a>
 
 				<button
 					style={{ background: color }}

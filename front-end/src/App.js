@@ -16,9 +16,6 @@ import Login from "./pages/Login";
 //context
 import useAuthContext from "./hooks/useAuthContext";
 
-//bootstrap
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.min.js";
 
 export default function App() {
 	const { user } = useAuthContext();
