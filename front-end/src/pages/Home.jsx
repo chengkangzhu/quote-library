@@ -97,13 +97,13 @@ export default function Home(props) {
 				>
 					{bookmarked ? <AiFillStar /> : <AiOutlineStar />}
 				</button>
-				<a
+				{/* <a
 					style={{ backgroundColor: color }}
 					className="icon-buttons"
 					target="_blank"
 				>
 					<AiFillRobot />
-				</a>
+				</a> */}
 
 				<button
 					style={{ background: color }}
